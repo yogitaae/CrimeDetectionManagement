@@ -88,29 +88,29 @@ public class CrimeManagement
 	        Officer existingOfficer = session.get(Officer.class, officer_id);
         	if (existingOfficer != null) 
 		{
-            	System.out.println("Warning: Officer with ID " + officer_id + " already exists. Please enter a unique ID.");
-            	return;
+            		System.out.println("Warning: Officer with ID " + officer_id + " already exists. Please enter a unique ID.");
+            		return;
         	}
-        of.setOfficer_id(officer_id);
+        	of.setOfficer_id(officer_id);
         
-        sc.nextLine();
-    	// To Add Officer Name
-    	System.out.print("Officer Name: ");
-    	String name = sc.nextLine();
-    	of.setName(name);
+        	sc.nextLine();
+    		// To Add Officer Name
+    		System.out.print("Officer Name: ");
+    		String name = sc.nextLine();
+    		of.setName(name);
+	    	
+	    	// To Add Officer Contact-Info
+	    	System.out.print("Officer Contact-Info: ");
+	    	long contact_info = sc.nextLong();
+	    	of.setContact_Info(contact_info);
     	
-    	// To Add Officer Contact-Info
-    	System.out.print("Officer Contact-Info: ");
-    	long contact_info = sc.nextLong();
-    	of.setContact_Info(contact_info);
+	    	System.out.println("\nOfficer Details Inserted with\n   Officer ID: "+officer_id+"\n   Officer Name: "+name+"\n   Officer Contact-Info: "+contact_info);
+	    	System.out.println("------------------------------------------------\n");
     	
-    	System.out.println("\nOfficer Details Inserted with\n   Officer ID: "+officer_id+"\n   Officer Name: "+name+"\n   Officer Contact-Info: "+contact_info);
-    	System.out.println("------------------------------------------------\n");
-    	
-    	// Saving updates
-    	session.save(of);
-    	Transaction transaction = session.beginTransaction();
-    	transaction.commit();
+	    	// Saving updates
+	    	session.save(of);
+	    	Transaction transaction = session.beginTransaction();
+	    	transaction.commit();
 		
 	}
 	
