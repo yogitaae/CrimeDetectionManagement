@@ -8,7 +8,7 @@ import org.hibernate.ObjectNotFoundException;
 import org.hibernate.exception.ConstraintViolationException;
 import java.util.Scanner;
 import java.util.List;
-
+	
 public class CrimeManagement 
 {
     // Static variables for Hibernate configuration, session, and session factory shared across the class.
