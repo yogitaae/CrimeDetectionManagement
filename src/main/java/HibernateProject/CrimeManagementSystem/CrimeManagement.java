@@ -355,34 +355,34 @@ public class CrimeManagement
         	}
         	sus.setSuspect_id(suspect_id);
     	        
-        sc.nextLine();
-    	// Add Suspect Name
-    	System.out.print("Suspect Name: ");
-    	String name = sc.nextLine();
-    	sus.setName(name);
+     		   sc.nextLine();
+	    	// Add Suspect Name
+	    	System.out.print("Suspect Name: ");
+	    	String name = sc.nextLine();
+	    	sus.setName(name);
     	
-    	// Add Suspect Gender
-    	System.out.print("Suspect Gender: ");
-    	String gender = sc.next();
-    	sus.setGender(gender);
+	    	// Add Suspect Gender
+	    	System.out.print("Suspect Gender: ");
+	    	String gender = sc.next();
+	    	sus.setGender(gender);
     	
-    	sc.nextLine();
-    	// Add Suspect Address
-    	System.out.print("Suspect Address: ");
-    	String address = sc.nextLine();
-    	sus.setAddress(address);
+	    	sc.nextLine();
+	    	// Add Suspect Address
+	    	System.out.print("Suspect Address: ");
+	    	String address = sc.nextLine();
+	    	sus.setAddress(address);
     	
-    	// Add Suspect Contact info
-    	System.out.print("Suspect Contact-Info: ");
-    	long contact_info = sc.nextLong();
-    	sus.setContact_info(contact_info);
+	    	// Add Suspect Contact info
+	    	System.out.print("Suspect Contact-Info: ");
+	    	long contact_info = sc.nextLong();
+	    	sus.setContact_info(contact_info);
     	
-    	System.out.println("\nSuspect Details Inserted with\n   Suspect ID: "+suspect_id+"\n   Suspect Name: "+name+"\n   Suspect Gender: "+gender+"\n   Suspect Address: "+address+"\n  Suspect Contact-Info: "+contact_info);
-    	System.out.println("------------------------------------------------\n");
+	    	System.out.println("\nSuspect Details Inserted with\n   Suspect ID: "+suspect_id+"\n   Suspect Name: "+name+"\n   Suspect Gender: "+gender+"\n   Suspect Address: "+address+"\n  Suspect Contact-Info: "+contact_info);
+	    	System.out.println("------------------------------------------------\n");
     	
-    	session.save(sus);
-    	Transaction transaction = session.beginTransaction();
-    	transaction.commit();
+	    	session.save(sus);
+    		Transaction transaction = session.beginTransaction();
+    		transaction.commit();
 		
       }
 	
