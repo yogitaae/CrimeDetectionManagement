@@ -11,20 +11,20 @@ import java.util.List;
 
 public class CrimeManagement 
 {
-	// Static variables for Hibernate configuration, session, and session factory shared across the class.
-	static Configuration config;
-	static Session session;
-	static SessionFactory factory;
+    // Static variables for Hibernate configuration, session, and session factory shared across the class.
+    static Configuration config;
+    static Session session;
+    static SessionFactory factory;
 	
     // Create a single Scanner instance for the entire class
     private static Scanner sc = new Scanner(System.in);
 
 	
     // Entity 1.Officer - Information 
-	public static void OfficerInfo()
-	{
-		// Hibernate Connection specifications
-		Configuration config = new Configuration();
+    public static void OfficerInfo()
+    {
+ 	// Hibernate Connection specifications
+	Configuration config = new Configuration();
     	config.configure();
     	SessionFactory factory = config.buildSessionFactory();
     	Session session = factory.openSession();
@@ -32,39 +32,39 @@ public class CrimeManagement
     	while(true)
 		{
     		System.out.println("\n------------------------------------------------");
-			System.out.println("|                Officer details               |");
-			System.out.println("------------------------------------------------");
-			System.out.println("|          1. Add Officer Information          |");
-			System.out.println("|           2. View Officer Details            |");
-			System.out.println("|          3. Update Officer Details           |");
-			System.out.println("|               4. Drop Officer                |");
-			System.out.println("|             5. Back to main page             |");
-			System.out.println("------------------------------------------------");
+		System.out.println("|                Officer details               |");
+		System.out.println("------------------------------------------------");
+		System.out.println("|          1. Add Officer Information          |");
+		System.out.println("|           2. View Officer Details            |");
+		System.out.println("|          3. Update Officer Details           |");
+		System.out.println("|               4. Drop Officer                |");
+		System.out.println("|             5. Back to main page             |");
+		System.out.println("------------------------------------------------");
 
-			System.out.println();
-			System.out.print("Enter your choice: ");
-			int option = sc.nextInt();
-			switch(option)
-			{
-			case 1:
-				addOfficer();
-				break;
-			case 2:
-				viewOfficer();
-				break;
-			case 3:
-			    updateOfficer();
-    	        break;
-			case 4:
-				dropOfficer();
-				break;
-			case 5:
-				return;
+		System.out.println();
+		System.out.print("Enter your choice: ");
+		int option = sc.nextInt();
+		switch(option)
+		{
+		case 1:
+			addOfficer();
+			break;
+		case 2:
+			viewOfficer();
+			break;
+		case 3:
+		        updateOfficer();
+    	                break;
+		case 4:
+			dropOfficer();
+			break;
+		case 5:
+			return;
 			
-			default:
-				System.out.println("Invalid! Choose a correct option.");
-			}// close switch 
-		}// close while
+		default:
+			System.out.println("Invalid! Choose a correct option.");
+		}// close switch 
+	}// close while
     }// close function OfficerInfo
 	
 	
@@ -73,23 +73,24 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
 		
-    	// Calling class Officer to access getters-setters
-    	Officer of = new Officer();
+	    	// Calling class Officer to access getters-setters
+    		Officer of = new Officer();
     	
-    	// To Add Officer ID
-    	System.out.print("Officer ID: ");
-    	int officer_id = sc.nextInt();
+    		// To Add Officer ID
+    		System.out.print("Officer ID: ");
+    		int officer_id = sc.nextInt();
     	    	
-    	// Check if Officer ID already exists
-        Officer existingOfficer = session.get(Officer.class, officer_id);
-        if (existingOfficer != null) {
-            System.out.println("Warning: Officer with ID " + officer_id + " already exists. Please enter a unique ID.");
-            return;
-        }
+    		// Check if Officer ID already exists
+	        Officer existingOfficer = session.get(Officer.class, officer_id);
+        	if (existingOfficer != null) 
+		{
+            	System.out.println("Warning: Officer with ID " + officer_id + " already exists. Please enter a unique ID.");
+            	return;
+        	}
         of.setOfficer_id(officer_id);
         
         sc.nextLine();
@@ -119,11 +120,11 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
     	
-    	System.out.println("------------------------------------------------");
+    		System.out.println("\n------------------------------------------------");
 		System.out.println("|                Officer Details               |");
 		System.out.println("------------------------------------------------");
 		System.out.println("| Officer_ID  | Officer_Name | Officer_Contact |");
@@ -147,34 +148,34 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
     	
-		System.out.println("------------------------------------------------");
-    	System.out.println("|           Update Officer details             |");
-    	System.out.println("------------------------------------------------");
-    	System.out.println("|          1. Update Officer Name              |");
-    	System.out.println("|      2. Update Officer Contact-Info          |");
-    	System.out.println("------------------------------------------------");
+		System.out.println("\n------------------------------------------------");
+	    	System.out.println("|           Update Officer details             |");
+	    	System.out.println("------------------------------------------------");
+    		System.out.println("|          1. Update Officer Name              |");
+    		System.out.println("|      2. Update Officer Contact-Info          |");
+    		System.out.println("------------------------------------------------");
 
-        System.out.println();
-        System.out.print("Enter your choice ");
+        	System.out.println();
+        	System.out.print("Enter your choice ");
 
-       	int option1 = sc.nextInt();
-       	switch (option1) 
-        {
-        case 1:
-          	updateOfficerName();
-            break;
-        case 2:
-            updateOfficerContact();
-            break;
+       		int option1 = sc.nextInt();
+       		switch (option1) 
+        	{
+        	case 1:
+	          	updateOfficerName();
+            		break;
+        	case 2:
+            		updateOfficerContact();
+            		break;
         
-        default:
-            System.out.println("Invalid! Choose a correct option.");
-        }// close switch
-    }
+	        default:
+            		System.out.println("Invalid! Choose a correct option.");
+		}// close switch
+	}
 	
 	
 	// Function to Update Officer Name
@@ -182,15 +183,15 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+	    	SessionFactory factory = config.buildSessionFactory();
+	    	Session session = factory.openSession();
 		
-    	// Enter ID for which name is to be updated
-    	System.out.print("Officer ID: ");
-    	int officer_id = sc.nextInt();
+    		// Enter ID for which name is to be updated
+    		System.out.print("Officer ID: ");
+    		int officer_id = sc.nextInt();
     	
-    	Officer of = session.get(Officer.class,officer_id);
+	    	Officer of = session.get(Officer.class,officer_id);
 		Transaction transaction = session.beginTransaction();
 		
 		sc.nextLine();
@@ -210,15 +211,15 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+	    	SessionFactory factory = config.buildSessionFactory();
+	    	Session session = factory.openSession();
 		
-    	// Enter ID for which Contact info is to be updated
-    	System.out.print("Officer ID: ");
-    	int officer_id = sc.nextInt();
+	    	// Enter ID for which Contact info is to be updated
+	    	System.out.print("Officer ID: ");
+    		int officer_id = sc.nextInt();
     	
-    	Officer of = session.get(Officer.class,officer_id);
+    		Officer of = session.get(Officer.class,officer_id);
 		Transaction transaction = session.beginTransaction();
 		
 		System.out.print("Enter Officer's updated contact-info "+officer_id+" : ");
@@ -237,37 +238,37 @@ public class CrimeManagement
 	public static void dropOfficer() 
 	{
 		// Hibernate Connection Specification
-	    Configuration config = new Configuration();
-	    config.configure();
-	    SessionFactory factory = config.buildSessionFactory();
-	    Session session = factory.openSession();
+	    	Configuration config = new Configuration();
+	    	config.configure();
+	    	SessionFactory factory = config.buildSessionFactory();
+	    	Session session = factory.openSession();
 
-	    // Prompt the user to enter the Officer ID to drop
-	    System.out.print("Enter Officer ID to drop: ");
-	    int officerIdToDelete = sc.nextInt();
+	    	// Prompt the user to enter the Officer ID to drop
+	    	System.out.print("Enter Officer ID to drop: ");
+	    	int officerIdToDelete = sc.nextInt();
 
-	    try 
-	    {
-	    	// Retrieve the Officer object based on the entered ID
-		    Officer of = session.get(Officer.class, officerIdToDelete);
+	    	try 
+	    	{
+		    	// Retrieve the Officer object based on the entered ID
+		    	Officer of = session.get(Officer.class, officerIdToDelete);
 
-	        if (of != null) 
-	        {
-	            // Begin transaction
-	            Transaction transaction = session.beginTransaction();
+	        	if (of != null) 
+	        	{
+	            		// Begin transaction
+	            		Transaction transaction = session.beginTransaction();
 
-	            // Delete the Officer
-	            session.delete(of);
+	            		// Delete the Officer
+	            		session.delete(of);
 
-	            // Commit the transaction
-	            transaction.commit();
+	            		// Commit the transaction
+	            		transaction.commit();
 
-	            System.out.println("Officer with ID " + officerIdToDelete + " deleted successfully.");
-	        } 
-	        else 
-	        {
-	            System.out.println("No Officer found with ID " + officerIdToDelete);
-	        }
+	            		System.out.println("Officer with ID " + officerIdToDelete + " deleted successfully.");
+	        	} 
+	        	else 
+	        	{
+	            		System.out.println("No Officer found with ID " + officerIdToDelete);
+	        	}
 	    } 
 	    catch (ConstraintViolationException ex) 
 	    {
@@ -286,12 +287,12 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
-    	int option;
+	    	config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
+    		int option;
 		
-    	while(true)
+    		while(true)
 		{
 			System.out.println("\n------------------------------------------------");
 			System.out.println("|              Suspect details                 |");
@@ -335,23 +336,24 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+	    	config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
 		
-    	Suspect sus = new Suspect();
+	    	Suspect sus = new Suspect();
     	
-    	// Add Suspect ID
-    	System.out.print("Suspect ID: ");
-    	int suspect_id = sc.nextInt();
+    		// Add Suspect ID
+    		System.out.print("Suspect ID: ");
+    		int suspect_id = sc.nextInt();
     	
-    	// Check if Suspect ID already exists
-        Suspect existingSuspect = session.get(Suspect.class, suspect_id);
-        if (existingSuspect != null) {
-            System.out.println("Warning: Suspect with ID " + suspect_id + " already exists. Please enter a unique ID.");
-            return;
-        }
-        sus.setSuspect_id(suspect_id);
+	    	// Check if Suspect ID already exists
+        	Suspect existingSuspect = session.get(Suspect.class, suspect_id);
+        	if (existingSuspect != null) 
+		{
+            		System.out.println("Warning: Suspect with ID " + suspect_id + " already exists. Please enter a unique ID.");
+            		return;
+        	}
+        	sus.setSuspect_id(suspect_id);
     	        
         sc.nextLine();
     	// Add Suspect Name
@@ -382,7 +384,7 @@ public class CrimeManagement
     	Transaction transaction = session.beginTransaction();
     	transaction.commit();
 		
-	}
+      }
 	
 	
 	// Function to View Suspect Table
@@ -390,12 +392,12 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
 
-    	System.out.println("-----------------------------------------------------------------------------------");
-    	System.out.println("|                             Suspect Details:                                    |");
+    		System.out.println("-----------------------------------------------------------------------------------");
+    		System.out.println("|                             Suspect Details:                                    |");
 		System.out.println("-----------------------------------------------------------------------------------");
 		System.out.println("| Suspect_ID | Suspect_Name  | Suspect_Gender | Suspect_Address | Suspect_Contact |");
 		System.out.println("-----------------------------------------------------------------------------------");
@@ -419,9 +421,9 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
     			
 		System.out.println("------------------------------------------------");
 		System.out.println("|          Update Suspect details              |");
@@ -458,15 +460,15 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
 		
-    	// Enter ID for which name is to be updated
-    	System.out.print("Suspect ID: ");
-    	int suspect_id = sc.nextInt();
+    		// Enter ID for which name is to be updated
+    		System.out.print("Suspect ID: ");
+    		int suspect_id = sc.nextInt();
     	
-    	Suspect sus = session.get(Suspect.class,suspect_id);
+    		Suspect sus = session.get(Suspect.class,suspect_id);
 		Transaction transaction = session.beginTransaction();
 		
 		sc.nextLine();
@@ -487,15 +489,15 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
 		
-    	// Enter ID for which address is to be updated
-    	System.out.print("Suspect ID: ");
-    	int suspect_id = sc.nextInt();
+	    	// Enter ID for which address is to be updated
+	    	System.out.print("Suspect ID: ");
+	    	int suspect_id = sc.nextInt();
     	
-    	Suspect sus = session.get(Suspect.class,suspect_id);
+    		Suspect sus = session.get(Suspect.class,suspect_id);
 		Transaction transaction = session.beginTransaction();
 		
 		sc.nextLine();
@@ -516,15 +518,15 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
 		
-    	// Enter ID for which contact-info is to be updated
-    	System.out.print("Suspect ID: ");
-    	int suspect_id = sc.nextInt();
+    		// Enter ID for which contact-info is to be updated
+    		System.out.print("Suspect ID: ");
+    		int suspect_id = sc.nextInt();
     	
-    	Suspect sus = session.get(Suspect.class,suspect_id);
+    		Suspect sus = session.get(Suspect.class,suspect_id);
 		Transaction transaction = session.beginTransaction();
 		
 		System.out.print("Enter Suspect's updated contact-info for ID "+suspect_id+" : ");
@@ -543,19 +545,19 @@ public class CrimeManagement
 	public static void dropSuspect() 
 	{
 		// Hibernate Connection Specification
-	    Configuration config = new Configuration();
-	    config.configure();
-	    SessionFactory factory = config.buildSessionFactory();
-	    Session session = factory.openSession();
+	    	Configuration config = new Configuration();
+	    	config.configure();
+	    	SessionFactory factory = config.buildSessionFactory();
+	    	Session session = factory.openSession();
 
-	    // Prompt the user to enter the Officer ID to drop
-	    System.out.print("Enter Suspect ID to drop: ");
-	    int suspectIdToDelete = sc.nextInt();
+	    	// Prompt the user to enter the Officer ID to drop
+	    	System.out.print("Enter Suspect ID to drop: ");
+	    	int suspectIdToDelete = sc.nextInt();
 	    
-	    try
-	    {
-	    	// Retrieve the Officer object based on the entered ID
-	    	Suspect sus = session.get(Suspect.class, suspectIdToDelete);
+	    	try
+	    	{
+	    		// Retrieve the Officer object based on the entered ID
+	    		Suspect sus = session.get(Suspect.class, suspectIdToDelete);
 
 	    	if (sus != null)
 	    	{
@@ -587,12 +589,12 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
-    	int option;
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
+    		int option;
 		
-    	while(true)
+    		while(true)
 		{
 			System.out.println("\n------------------------------------------------");
 			System.out.println("|               Victim details                 |");
@@ -636,53 +638,53 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
 		
-    	Victim v = new Victim();
+    		Victim v = new Victim();
     	
-    	// Add Victim ID
-    	System.out.print("Victim ID: ");
-    	int victim_id = sc.nextInt();
+    		// Add Victim ID
+    		System.out.print("Victim ID: ");
+    		int victim_id = sc.nextInt();
     	
-    	// Check if Victim ID already exists
-        Victim existingVictim = session.get(Victim.class, victim_id);
-        if (existingVictim != null) 
-        {
-            System.out.println("Warning: Victim with ID " + victim_id + " already exists. Please enter a unique ID.");
-            return;
-        }
-    	v.setVictim_id(victim_id);
+	    	// Check if Victim ID already exists
+	        Victim existingVictim = session.get(Victim.class, victim_id);
+	        if (existingVictim != null) 
+	        {
+            		System.out.println("Warning: Victim with ID " + victim_id + " already exists. Please enter a unique ID.");
+            		return;
+        	}
+    		v.setVictim_id(victim_id);
     	
-    	sc.nextLine();
-    	// Add Victim Name
-    	System.out.print("Victim Name: ");
-    	String name = sc.nextLine();
-    	v.setName(name);
+    		sc.nextLine();
+    		// Add Victim Name
+    		System.out.print("Victim Name: ");
+    		String name = sc.nextLine();
+    		v.setName(name);
     	
-    	// Add Victim Gender
-    	System.out.print("Victim Gender: ");
-    	String gender = sc.next();
-    	v.setGender(gender);
+    		// Add Victim Gender
+    		System.out.print("Victim Gender: ");
+    		String gender = sc.next();
+    		v.setGender(gender);
+	    	
+	    	sc.nextLine();
+	    	// Add Victim Address
+	    	System.out.print("Victim Address: ");
+	    	String address = sc.nextLine();
+	    	v.setAddress(address);
     	
-    	sc.nextLine();
-    	// Add Victim Address
-    	System.out.print("Victim Address: ");
-    	String address = sc.nextLine();
-    	v.setAddress(address);
+	    	// Add Victim Contact-info
+	    	System.out.print("Victim Contact-Info: ");
+	    	long contact_info = sc.nextLong();
+	    	v.setContact_info(contact_info);
     	
-    	// Add Victim Contact-info
-    	System.out.print("Victim Contact-Info: ");
-    	long contact_info = sc.nextLong();
-    	v.setContact_info(contact_info);
-    	
-    	System.out.println("\nVictim Details Inserted with\n   Victim ID: "+victim_id+"\n   Victim Name: "+name+"\n   Victim Gender: "+gender+"\n   Victim Address: "+address+"\n  Victim Contact-Info: "+contact_info);
-    	System.out.println("------------------------------------------------\n");
-    	
-    	session.save(v);
-    	Transaction transaction = session.beginTransaction();
-    	transaction.commit();
+	    	System.out.println("\nVictim Details Inserted with\n   Victim ID: "+victim_id+"\n   Victim Name: "+name+"\n   Victim Gender: "+gender+"\n   Victim Address: "+address+"\n  Victim Contact-Info: "+contact_info);
+	    	System.out.println("------------------------------------------------\n");
+	    	
+	    	session.save(v);
+	    	Transaction transaction = session.beginTransaction();
+    		transaction.commit();
 		
 	}
 	
@@ -692,11 +694,11 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+	    	config.configure();
+	    	SessionFactory factory = config.buildSessionFactory();
+	    	Session session = factory.openSession();
 		
-    	System.out.println("-----------------------------------------------------------------------------------");
+    		System.out.println("-----------------------------------------------------------------------------------");
 		System.out.println("|                               Victim Details                                    |");		
 		System.out.println("-----------------------------------------------------------------------------------");
 		System.out.println("| Victim_ID |  Victim_Name  | Victim_Gender |  Victim_Address  |  Victim_Contact  |");
@@ -721,12 +723,12 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
-    	
-    	System.out.println("------------------------------------------------");
-    	System.out.println("|            Update Victim details             |");
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
+	    	
+    		System.out.println("\n------------------------------------------------");
+    		System.out.println("|            Update Victim details             |");
 		System.out.println("------------------------------------------------");
 		System.out.println("|            1. Update Victim Name             |");
 		System.out.println("|           2. Update Victim Address           |");
@@ -760,15 +762,15 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
 		
-    	// Enter ID for which name is to be updated 
-    	System.out.print("Victim ID: ");
-    	int victim_id = sc.nextInt();
+    		// Enter ID for which name is to be updated 
+    		System.out.print("Victim ID: ");
+    		int victim_id = sc.nextInt();
     	
-    	Victim v = session.get(Victim.class,victim_id);
+	    	Victim v = session.get(Victim.class,victim_id);
 		Transaction transaction = session.beginTransaction();
 		
 		sc.nextLine();
@@ -789,15 +791,15 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
 		
-    	// Enter ID for which address is to be updated
-    	System.out.print("Victim ID: ");
-    	int victim_id = sc.nextInt();
+    		// Enter ID for which address is to be updated
+    		System.out.print("Victim ID: ");
+    		int victim_id = sc.nextInt();
     	
-    	Victim v = session.get(Victim.class,victim_id);
+    		Victim v = session.get(Victim.class,victim_id);
 		Transaction transaction = session.beginTransaction();
 		
 		sc.nextLine();
@@ -818,18 +820,18 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+	    	config.configure();
+	    	SessionFactory factory = config.buildSessionFactory();
+	    	Session session = factory.openSession();
 		
-    	// Enter ID for which contact-info is to be updated
-    	System.out.print("Victim ID: ");
-    	int victim_id = sc.nextInt();
+    		// Enter ID for which contact-info is to be updated
+    		System.out.print("Victim ID: ");
+    		int victim_id = sc.nextInt();
     	
-    	Victim v = session.get(Victim.class,victim_id);
+    		Victim v = session.get(Victim.class,victim_id);
 		Transaction transaction = session.beginTransaction();
 		
-		System.out.print("Enter Officer's updated contact-info for ID "+victim_id+" : ");
+		System.out.print("Enter Victim's updated contact-info for ID "+victim_id+" : ");
 		long contact_info = sc.nextLong();
 		
 		v.setContact_info(contact_info);
@@ -845,38 +847,38 @@ public class CrimeManagement
 	public static void dropVictim() 
 	{
 		// Hibernate Connection Specification
-	    Configuration config = new Configuration();
-	    config.configure();
-	    SessionFactory factory = config.buildSessionFactory();
-	    Session session = factory.openSession();
+	    	Configuration config = new Configuration();
+	    	config.configure();
+	    	SessionFactory factory = config.buildSessionFactory();
+	    	Session session = factory.openSession();
 
-	    // Prompt the user to enter the Vitcim ID to drop
-	    System.out.print("Enter Victim ID to drop: ");
-	    int victimIdToDelete = sc.nextInt();
+	    	// Prompt the user to enter the Vitcim ID to drop
+	    	System.out.print("Enter Victim ID to drop: ");
+	    	int victimIdToDelete = sc.nextInt();
 
-	    // Retrieve the Victim object based on the entered ID
-	    Victim v = session.get(Victim.class, victimIdToDelete);
+	    	// Retrieve the Victim object based on the entered ID
+	    	Victim v = session.get(Victim.class, victimIdToDelete);
 
-	    try
-	    {
-	    	if (v != null) 
+	    	try
 	    	{
-	    		// Begin transaction
-	    		Transaction transaction = session.beginTransaction();
+		    	if (v != null) 
+	    		{
+		    		// Begin transaction
+	    			Transaction transaction = session.beginTransaction();
 	    		
-	    		// Delete the Victim
-	    		session.delete(v);
+	    			// Delete the Victim
+	    			session.delete(v);
 	    		
-	    		// Commit the transaction
-	    		transaction.commit();
+	    			// Commit the transaction
+	    			transaction.commit();
 	    		
-	    		System.out.println("Victim with ID " + victimIdToDelete + " deleted successfully.");
+	    			System.out.println("Victim with ID " + victimIdToDelete + " deleted successfully.");
+	    		}
+	    		else
+	    		{
+		    		System.out.println("No victim found with ID " + victimIdToDelete);
+	    		}
 	    	}
-	    	else
-	    	{
-	    		System.out.println("No victim found with ID " + victimIdToDelete);
-	    	}
-	    }
 	    catch (Exception e) 
 	    {
 	        System.out.println("Cannot delete Victim with ID " + victimIdToDelete + " due to foreign key constraint.");
@@ -889,13 +891,13 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
 		
-    	while(true)
+    		while(true)
 		{
-    		System.out.println("\n------------------------------------------------");
+    			System.out.println("\n------------------------------------------------");
 			System.out.println("|                 Case details                 |");
 			System.out.println("------------------------------------------------");
 			System.out.println("|               1. Add Case Info               |");
@@ -1014,9 +1016,13 @@ public class CrimeManagement
 
 	        session.save(c);
 	        transaction.commit();
-	    } catch (ObjectNotFoundException e) {
-	        System.out.println("Error: " + e.getMessage() + " not found.");
-	    } catch (Exception e) {
+	    } 
+	    catch (ObjectNotFoundException e) 
+		    {
+	        	System.out.println("Error: " + e.getMessage() + " not found.");
+	    } 
+	    catch (Exception e) 
+		    {
 	        System.out.println("Error: " + e.getMessage());
 	    }
 	}
@@ -1028,11 +1034,11 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-	    config.configure();
-	    SessionFactory factory = config.buildSessionFactory();
-	    Session session = factory.openSession();
+	    	config.configure();
+		SessionFactory factory = config.buildSessionFactory();
+	    	Session session = factory.openSession();
 		
-	    System.out.println("-----------------------------------------------------------------------------------------------------------------------");
+	    	System.out.println("-----------------------------------------------------------------------------------------------------------------------");
 		System.out.println("|                                                   Case Details:                                                     |");
 		System.out.println("-----------------------------------------------------------------------------------------------------------------------");
 		System.out.println("|  Case_ID | Officer_ID | Suspect_ID |  Victim_ID  |       Case_Title       |     Reported_Date      |  Case_Status   |");
@@ -1057,12 +1063,12 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
     	
-    	System.out.println("------------------------------------------------");
-    	System.out.println("|            Update Case details               |");
+    		System.out.println("\n------------------------------------------------");
+    		System.out.println("|            Update Case details               |");
 		System.out.println("------------------------------------------------");
 		System.out.println("|           1. Update Cases Title              |");
 		System.out.println("|          2. Update Reported Date             |");
@@ -1079,6 +1085,7 @@ public class CrimeManagement
 			break;
 		case 2:
 			updateReportedDate();
+			break;
 		case 3:
 			updateCaseStatus();
 			break;
@@ -1096,15 +1103,15 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+	    	SessionFactory factory = config.buildSessionFactory();
+	    	Session session = factory.openSession();
 		
-    	// Enter ID for which Title is to be updated
-    	System.out.print("Case ID: ");
-    	int case_id = sc.nextInt();
+	    	// Enter ID for which Title is to be updated
+	    	System.out.print("Case ID: ");
+	    	int case_id = sc.nextInt();
     	
-    	Cases c = session.get(Cases.class,case_id);
+	    	Cases c = session.get(Cases.class,case_id);
 		Transaction transaction = session.beginTransaction();
 		
 		sc.nextLine();
@@ -1151,15 +1158,15 @@ public class CrimeManagement
 	{
 		// Hibernate Connection Specification
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+    		config.configure();
+    		SessionFactory factory = config.buildSessionFactory();
+    		Session session = factory.openSession();
 		
-    	// Enter ID for which Status is to be updated
-    	System.out.print("Case ID: ");
-    	int case_id = sc.nextInt();
+    		// Enter ID for which Status is to be updated
+    		System.out.print("Case ID: ");
+    		int case_id = sc.nextInt();
     	
-    	Cases c = session.get(Cases.class,case_id);
+    		Cases c = session.get(Cases.class,case_id);
 		Transaction transaction = session.beginTransaction();
 		
 		System.out.print("Enter Case's updated status for ID "+case_id+" : ");
@@ -1177,9 +1184,9 @@ public class CrimeManagement
 	public static void main(String[] args) 
 	{
 		Configuration config = new Configuration();
-    	config.configure();
-    	SessionFactory factory = config.buildSessionFactory();
-    	Session session = factory.openSession();
+	    	config.configure();
+	    	SessionFactory factory = config.buildSessionFactory();
+	    	Session session = factory.openSession();
 		
 		while(true)
 		{
