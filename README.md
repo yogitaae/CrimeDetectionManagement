@@ -1,4 +1,4 @@
-#Crime Management System
+# Crime Management System
 
 The Crime Management System is a Java-based application utilizing Hibernate for optimized database interactions. Focused on simplicity and effectiveness, the system incorporates four primary entity classes: Officer, Suspect, Victim, and Case.
 
